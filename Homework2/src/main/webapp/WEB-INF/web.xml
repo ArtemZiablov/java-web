@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <!-- Опис сервлета -->
+    <servlet>
+        <!-- Ім'я сервлета -->
+        <servlet-name>helloServlet</servlet-name>
+        <!-- Повне ім'я класу сервлета -->
+        <servlet-class>ua.karazin.javaweb.homework2.HelloServlet</servlet-class>
+    </servlet>
+
+    <!-- Мапінг сервлета (URL, за яким сервлет буде доступний) -->
+    <servlet-mapping>
+        <!-- Ім'я сервлета -->
+        <servlet-name>helloServlet</servlet-name>
+        <!-- Шлях, за яким буде доступний сервлет -->
+        <url-pattern>/hello-servlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
