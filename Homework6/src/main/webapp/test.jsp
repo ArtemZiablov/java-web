@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h2>Привет, ${userName}!</h2> <!-- Відображаємо ім'я користувача -->
+<h2>Привіт, ${userName}!</h2> <!-- Відображаємо ім'я користувача -->
 
 <h2>Умовні теги</h2>
 
@@ -29,21 +29,38 @@
 
 <h2>Форматування валют, дат, часу та чисел</h2>
 
-<!-- Форматування валюти -->
 <fmt:setLocale value="uk_UA" />
-<fmt:formatNumber value="123456.789" type="currency" />
+<p>Гривні: <fmt:formatNumber value="123456.789" type="currency" /></p>
 
-<br><br>
+<br>
 
-<!-- Форматування чисел -->
-<fmt:formatNumber value="123456.789" type="number" minFractionDigits="2" />
+<fmt:setLocale value="en_US" />
+<p>Долари США: <fmt:formatNumber value="123456.789" type="currency" /></p>
 
-<br><br>
+<br>
+
+<fmt:setLocale value="de_DE" />
+<p>Євро: <fmt:formatNumber value="123456.789" type="currency" /></p>
+
+<br>
+
+<fmt:setLocale value="en_GB" />
+<p>Фунти стерлінгів: <fmt:formatNumber value="123456.789" type="currency" /></p>
+
+<br>
+
+<p>Число з двома знаками після коми: <fmt:formatNumber value="123456.789" type="number" minFractionDigits="2" /></p>
+
+<br>
 
 <!-- Форматування відсотків -->
-<fmt:formatNumber value="0.75" type="percent" />
+<p>Відсоток: <fmt:formatNumber value="0.75" type="percent" /></p>
 
-<br><br>
+<p>Відсоток із двома знаками після коми: <fmt:formatNumber value="0.7567" type="percent" minFractionDigits="2" maxFractionDigits="2" /></p>
+
+
+
+<br>
 
 <!-- Форматування дати та часу -->
 <%
@@ -51,7 +68,11 @@
     request.setAttribute("currentDate", currentDate);  // Передаем дату в request
 %>
 
-<fmt:formatDate value="${currentDate}" type="both" dateStyle="long" timeStyle="medium" />
+<p>Поточна дата та час (український формат): <fmt:setLocale value="uk_UA" /><fmt:formatDate value="${currentDate}" type="both" dateStyle="long" timeStyle="medium" /></p>
+
+<p>Поточна дата та час (США формат): <fmt:setLocale value="en_US" /><fmt:formatDate value="${currentDate}" type="both" dateStyle="long" timeStyle="medium" /></p>
+
+<p>Поточна дата та час (німецький формат): <fmt:setLocale value="de_DE" /><fmt:formatDate value="${currentDate}" type="both" dateStyle="long" timeStyle="medium" /></p>
 
 </body>
 </html>
