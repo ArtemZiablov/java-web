@@ -29,11 +29,15 @@
         .navigation {
             margin-bottom: 20px;
         }
+        .week-info {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 <h2>Календар Подій</h2>
-<p>Вітаємо, ${sessionScope.username}!</p>
+<p>Ласкаво просимо, ${sessionScope.username}!</p>
 <a href="logout">Вийти</a>
 <br/><br/>
 <div class="navigation">
@@ -50,9 +54,11 @@
     <a href="addEvent.jsp">Додати Нову Подію</a>
 </div>
 
-<!-- Діагностичні повідомлення -->
-<p>Початок тижня: <c:out value="${currentWeekStart}" /></p>
-<p>Кількість дат у тижні: <c:out value="${weekDates.size()}" /></p>
+<!-- Відображення номера тижня -->
+<div class="week-info">
+    <p>Номер тижня: <c:out value="${weekNumber}" /></p>
+</div>
+
 <c:if test="${empty weekDates}">
     <p style="color:red;">Список дат тижня порожній!</p>
 </c:if>

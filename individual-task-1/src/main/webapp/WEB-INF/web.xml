@@ -7,6 +7,10 @@
 
     <display-name>Персональний Планувальник Подій</display-name>
 
+    <welcome-file-list>
+        <welcome-file>registration.jsp</welcome-file>
+    </welcome-file-list>
+
     <jsp-config>
         <taglib>
             <taglib-uri>https://example.com/tags/displayEvents</taglib-uri>
@@ -14,5 +18,4 @@
         </taglib>
     </jsp-config>
 
-    <!-- Інші налаштування сервлетів, фільтрів тощо -->
 </web-app>
