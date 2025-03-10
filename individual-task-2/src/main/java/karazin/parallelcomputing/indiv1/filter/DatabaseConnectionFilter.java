@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-@WebFilter("/*") // Применение фильтра ко всем URL
+@WebFilter("/*")
 public class DatabaseConnectionFilter implements Filter {
 
     private static final Logger logger = LoggerFactory.getLogger(DatabaseConnectionFilter.class);

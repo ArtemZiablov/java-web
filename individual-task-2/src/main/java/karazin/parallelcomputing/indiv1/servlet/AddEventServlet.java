@@ -18,7 +18,6 @@ import java.time.format.DateTimeFormatter;
 
 @WebServlet("/addEvent")
 public class AddEventServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     private EventDAO eventDAO;
 

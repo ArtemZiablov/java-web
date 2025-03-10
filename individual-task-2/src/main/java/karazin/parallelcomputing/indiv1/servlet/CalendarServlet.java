@@ -25,7 +25,6 @@ import java.util.Locale;
 
 @WebServlet("/calendar")
 public class CalendarServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     private EventDAO eventDAO;
 
@@ -77,10 +76,6 @@ public class CalendarServlet extends HttpServlet {
         List<Event> events = null;
         try {
             events = eventDAO.getEventsByUsername(username);
-            System.out.println("Users events: " + events.size());
-            for (Event event : events) {
-                System.out.println(event);
-            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

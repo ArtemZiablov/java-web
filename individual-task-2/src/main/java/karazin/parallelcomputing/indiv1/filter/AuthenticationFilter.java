@@ -33,7 +33,7 @@ public class AuthenticationFilter implements Filter {
         logger.debug("AuthFilter: Checking access to URI {}", uri);
 
         // Определение, требует ли URL авторизации
-        boolean isProtectedPath = uri.startsWith(contextPath + "/tasks/") || uri.startsWith(contextPath + "/calendar/");
+        boolean isProtectedPath = uri.startsWith(contextPath + "/calendar/");
 
         if (isProtectedPath) {
             HttpSession session = req.getSession(false);

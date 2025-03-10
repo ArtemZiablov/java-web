@@ -7,6 +7,7 @@ import karazin.parallelcomputing.indiv1.util.DatabaseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/*
 @WebListener
 public class AppContextListener implements ServletContextListener {
 
@@ -25,3 +26,4 @@ public class AppContextListener implements ServletContextListener {
     }
 
 }
+*/

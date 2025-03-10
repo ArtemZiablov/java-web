@@ -15,7 +15,6 @@ import java.util.List;
 
 @WebServlet("/eventDetails")
 public class EventDetailsServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     private EventDAO eventDAO;
 
