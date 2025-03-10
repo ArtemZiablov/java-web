@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Дані підключення до БД -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/personal_event_planner</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+
+        <!-- Діалект (залежить від версії PostgreSQL) -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+
+        <!-- Відлагодження (показ SQL у консолі) -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Автоматичне створення/оновлення схеми (на час розробки) -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Пакети/класи для мапінгу -->
+        <mapping class="karazin.parallelcomputing.indiv1.model.User"/>
+        <mapping class="karazin.parallelcomputing.indiv1.model.Event"/>
+    </session-factory>
+</hibernate-configuration>

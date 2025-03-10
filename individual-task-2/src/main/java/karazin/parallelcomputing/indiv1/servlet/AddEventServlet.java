@@ -8,7 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import karazin.parallelcomputing.indiv1.dao.EventDAO;
 import karazin.parallelcomputing.indiv1.dao.EventDAOImpl;
+import karazin.parallelcomputing.indiv1.dao.UserDAO;
+import karazin.parallelcomputing.indiv1.dao.UserDAOImpl;
 import karazin.parallelcomputing.indiv1.model.Event;
+import karazin.parallelcomputing.indiv1.model.User;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -20,10 +23,12 @@ import java.time.format.DateTimeFormatter;
 public class AddEventServlet extends HttpServlet {
 
     private EventDAO eventDAO;
+    private UserDAO userDAO;
 
     @Override
     public void init() throws ServletException {
         eventDAO = new EventDAOImpl();
+        userDAO = new UserDAOImpl();
     }
 
     @Override
@@ -61,7 +66,8 @@ public class AddEventServlet extends HttpServlet {
             LocalTime eventTime = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));
 
             // Создание события
-            Event event = new Event(name, eventDate.toString(), eventTime.toString(), description, place, conferenceLink, username);
+            User user = userDAO.getUserByUsername(username);
+            Event event = new Event(name, eventDate, eventTime, description, place, conferenceLink, user);
             eventDAO.createEvent(event);
 
             // Перенаправление обратно на календарь с текущей неделей

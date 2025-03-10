@@ -50,7 +50,7 @@ public class EventDetailsServlet extends HttpServlet {
 
         try {
             Event event = eventDAO.getEventById(id);
-            if (event == null || !event.getUsername().equals(username)) {
+            if (event == null || !event.getUser().getUsername().equals(username)) {
                 // Event not found or doesn't belong to the user
                 response.sendRedirect("/calendar");
                 return;

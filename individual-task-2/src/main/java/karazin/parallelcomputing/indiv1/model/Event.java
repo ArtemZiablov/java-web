@@ -1,30 +1,62 @@
 package karazin.parallelcomputing.indiv1.model;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
+@Entity
+@Table(name = "events")
 public class Event {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
-    private String date;
-    private String time;
+
+    // Використовуємо LocalDate для стовпця DATE
+    @Column(name = "date", nullable = false)
+    private LocalDate date;
+
+    // Використовуємо LocalTime для стовпця TIME
+    @Column(name = "time", nullable = false)
+    private LocalTime time;
+
+    @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "place", length = 255)
     private String place;
+
+    @Column(name = "conference_link", length = 255)
     private String conferenceLink;
-    private String username; // To associate event with a user
 
-    // Constructors
-    public Event() {}
+    /**
+     * Відношення Many-to-One: кожна подія пов’язана з користувачем.
+     * Зовнішній ключ у таблиці events – стовпець username, який посилається на username у таблиці users.
+     */
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
+    private User user;
 
-    public Event(String name, String date, String time, String description, String place, String conferenceLink, String username) {
+    // Конструктори
+    public Event() {
+    }
+
+    public Event(String name, LocalDate date, LocalTime time, String description,
+                 String place, String conferenceLink, User user) {
         this.name = name;
         this.date = date;
         this.time = time;
         this.description = description;
         this.place = place;
         this.conferenceLink = conferenceLink;
-        this.username = username;
+        this.user = user;
     }
 
-    public Event(int id, String name, String date, String time, String description, String place, String conferenceLink, String username) {
+    public Event(int id, String name, LocalDate date, LocalTime time, String description,
+                 String place, String conferenceLink, User user) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -32,14 +64,13 @@ public class Event {
         this.description = description;
         this.place = place;
         this.conferenceLink = conferenceLink;
-        this.username = username;
+        this.user = user;
     }
 
-    // Getters and Setters
+    // Гетери та сеттери
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -47,31 +78,27 @@ public class Event {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
-
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
-
-    public void setTime(String time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -79,7 +106,6 @@ public class Event {
     public String getPlace() {
         return place;
     }
-
     public void setPlace(String place) {
         this.place = place;
     }
@@ -87,16 +113,27 @@ public class Event {
     public String getConferenceLink() {
         return conferenceLink;
     }
-
     public void setConferenceLink(String conferenceLink) {
         this.conferenceLink = conferenceLink;
     }
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "date = " + date + ", " +
+                "time = " + time + ", " +
+                "description = " + description + ", " +
+                "place = " + place + ", " +
+                "conferenceLink = " + conferenceLink + ", " +
+                "user = " + user.getUsername() + ")";
     }
 }

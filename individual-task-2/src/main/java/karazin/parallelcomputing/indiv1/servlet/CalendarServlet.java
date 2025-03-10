@@ -76,6 +76,10 @@ public class CalendarServlet extends HttpServlet {
         List<Event> events = null;
         try {
             events = eventDAO.getEventsByUsername(username);
+            System.out.println("User events:");
+            for(Event event : events) {
+                System.out.println(event);
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

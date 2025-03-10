@@ -32,7 +32,7 @@ public class DisplayEventsTag extends SimpleTagSupport {
 
             // Фильтрация мероприятий по имени пользователя и дате
             for (Event event : events) {
-                if (event.getDate().equals(date) && event.getUsername().equals(username)) {
+                if (event.getDate().toString().equals(date) && event.getUser().getUsername().equals(username)) {
                     eventsForDate.add(event);
                 }
             }
